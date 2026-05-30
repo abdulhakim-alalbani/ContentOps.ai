@@ -1,0 +1,423 @@
+{
+  "Sidebar": {
+    "clients": "Clients",
+    "dashboard": "Dashboard",
+    "orders": "My Tasks",
+    "inbox": "Inbox",
+    "settings": "Settings"
+  },
+  "Client": {
+    "title": "Clients",
+    "breadcrumbs": "Clients / New Client",
+    "welcome": "Welcome To The New Client Page",
+    "welcomeSub": "Enter First and Last Name or Company Name is Required To Save This Client.",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "companyName": "Add a Company Name",
+    "email": "Email Address",
+    "mobile": "Mobile Number",
+    "address": "Address (Optional)",
+    "country": "Country",
+    "state": "State / Province",
+    "postal": "Postal Code",
+    "save": "Save",
+    "cancel": "Cancel",
+    "clientSettings": "Client Settings",
+    "paymentReminders": "Send Payment Reminders",
+    "paymentRemindersSub": "At Customizable Intervals",
+    "lateFees": "Charge Late Fees",
+    "lateFeesSub": "Percentage or Flat-Rate Fees",
+    "currencyLanguage": "Currency & Language",
+    "currencyLanguageSub": "USD, English",
+    "invoiceAttachments": "Invoice Attachments",
+    "invoiceAttachmentsSub": "Attach PDF Copy To Emails",
+    "no": "No",
+    "yes": "Yes"
+  },
+  "Topbar": {
+    "searchPlaceholder": "Search tasks...",
+    "notifications": "Notifications",
+    "markAllRead": "Mark all read",
+    "viewAllMessages": "View all messages",
+    "settings": "Settings",
+    "signOut": "Sign out"
+  },
+  "Dashboard": {
+    "title": "Dashboard",
+    "breadcrumbs": "Dashboard / Overview",
+    "stats": {
+      "totalOrders": "Total orders",
+      "inProgress": "In progress",
+      "pendingReview": "Pending review",
+      "completed": "Completed",
+      "totalSpend": "Total spend"
+    },
+    "charts": {
+      "distribution": "Order distribution",
+      "progress": "Task completion over time"
+    },
+    "recentOrders": "Recent tasks",
+    "viewAll": "View all",
+    "table": {
+      "taskName": "Task Name",
+      "status": "Status",
+      "assignedTo": "Assigned To",
+      "deadline": "Deadline",
+      "loading": "Loading tasks...",
+      "noTasks": "No recent tasks found."
+    },
+    "quickActions": "Quick actions",
+    "newOrder": "Place new order",
+    "support": "Contact support",
+    "status": {
+      "submitted": "Submitted",
+      "in_progress": "In progress",
+      "review": "In review",
+      "revision": "Revision",
+      "completed": "Completed"
+    }
+  },
+  "Orders": {
+    "title": "My tasks",
+    "breadcrumbs": "Dashboard / Orders",
+    "placeOrder": "New Order",
+    "searchPlaceholder": "Search orders...",
+    "filterAll": "All Statuses",
+    "table": {
+      "id": "ID",
+      "order": "Order",
+      "type": "Type",
+      "status": "Status",
+      "deadline": "Deadline",
+      "price": "Price",
+      "actions": "Actions"
+    },
+    "types": {
+      "blog": "Blog Post",
+      "email": "Email Copy",
+      "copywriting": "Landing Page Copy",
+      "social": "Social Media Pack",
+      "design": "Design",
+      "development": "Development",
+      "content": "Content"
+    }
+  },
+  "MyTasks": {
+    "title": "My tasks",
+    "subtitle": "Manage your project milestones here",
+    "shareTasks": "Share tasks",
+    "newTask": "New task",
+    "tabs": {
+      "overview": "Overview",
+      "lists": "Lists",
+      "board": "Board",
+      "calendar": "Calendar",
+      "assigned": "Tasks assigned to me"
+    },
+    "filters": {
+      "groupStatus": "Group: status",
+      "columns": "Columns",
+      "search": "Search task...",
+      "allProject": "All project"
+    },
+    "columns": {
+      "todo": "To do",
+      "inProgress": "In progress",
+      "inReview": "In review",
+      "completed": "Completed"
+    },
+    "underDevelopment": "This view is currently under development.",
+    "modal": {
+      "title": "Create New Task",
+      "taskTitle": "Task Title",
+      "taskTitlePlaceholder": "e.g. Website Redesign",
+      "type": "Type",
+      "priority": "Priority",
+      "assignee": "Assign To",
+      "unassigned": "Unassigned",
+      "deadline": "Target Deadline",
+      "attachments": "Attachments",
+      "upload": "Click to upload",
+      "description": "Brief / Description",
+      "descriptionPlaceholder": "Describe the task requirements...",
+      "cancel": "Cancel",
+      "create": "Create Task"
+    }
+  },
+  "Inbox": {
+    "title": "Inbox",
+    "markAllRead": "Mark all read",
+    "search": "Search messages...",
+    "attachments": "Attachments",
+    "replyPlaceholder": "Reply to...",
+    "send": "Send"
+  },
+  "Landing": {
+    "nav": {
+      "product": "Product",
+      "solutions": "Solutions",
+      "resources": "Resources",
+      "pricing": "Pricing",
+      "signIn": "Sign in"
+    },
+    "hero": {
+      "rating": "4.9 on TrustPilot",
+      "title": "Streamline Your Content Pipeline from Order to Publish",
+      "subtitle": "The all-in-one workspace for agencies and marketing teams to manage content requests, track progress, and deliver high-quality drafts on time without the chaos.",
+      "tryFree": "Try App For Free",
+      "bookDemo": "Book A Demo",
+      "paneFeedback": "Love it! Exactly what our agency needed",
+      "paneAction": "Automate your content pipeline"
+    },
+    "product": {
+      "title": "Supercharge your workflow",
+      "desc": "Everything you need to manage tasks, collaborate, and deliver projects on time in one unified platform."
+    },
+    "solutions": {
+      "label": "TAILORED SOLUTIONS",
+      "title": "Built for every content team",
+      "desc": "Whether you are managing clients or scaling your internal blog, ContentOps adapts to your needs.",
+      "agencies": {
+        "title": "For Marketing Agencies",
+        "desc": "Manage dozens of client requests in one place. Keep clients updated with branded boards and stop chasing emails."
+      },
+      "inhouse": {
+        "title": "For In-house Teams",
+        "desc": "Align your marketing department. Request content from internal writers, track approvals, and publish faster."
+      },
+      "freelancers": {
+        "title": "For Content Creators",
+        "desc": "Receive clear briefs, submit drafts, and get feedback instantly. No more lost context in Slack messages."
+      }
+    },
+    "workflow": {
+      "label": "SMARTER WORKFLOWS",
+      "title": "Built to scale your content operations.",
+      "desc": "Replace messy email threads and scattered spreadsheets with a centralized content operating system designed for speed and clarity.",
+      "f1Title": "Frictionless Content Ordering",
+      "f1Desc": "Allow clients or team members to request specific content pieces through a structured, easy-to-use ordering system.",
+      "f2Title": "Visual Kanban Boards",
+      "f2Desc": "Track every article's status from 'Drafting' to 'Review' to 'Approved' with a single, clear visual board.",
+      "f3Title": "Seamless Collaboration",
+      "f3Desc": "Assign tasks to specific writers, receive instant notifications, and keep everyone completely aligned on deadlines."
+    },
+    "whyUs": {
+      "label": "WHY US",
+      "title": "Why marketing teams love ContentOps",
+      "statNumber": "10k+",
+      "statDesc": "Content drafts delivered via ContentOps",
+      "cardTitle": "Never lose track of a content draft again. Everything organized instantly."
+    },
+    "pricing": {
+      "title": "Simple, transparent pricing",
+      "desc": "No hidden fees. No surprise charges.",
+      "monthly": "Monthly",
+      "annually": "Annually",
+      "free": {
+        "name": "Starter",
+        "price": "$0",
+        "desc": "Perfect for individuals just getting started.",
+        "btn": "Get Started",
+        "features": ["Up to 3 projects", "Basic task management", "Community support"]
+      },
+      "pro": {
+        "name": "Professional",
+        "price": "$29",
+        "desc": "Ideal for small teams and growing businesses.",
+        "btn": "Start Free Trial",
+        "features": ["Unlimited projects", "Advanced reporting", "Priority support", "Custom workflows"]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "price": "Custom",
+        "desc": "For large organizations with complex needs.",
+        "btn": "Contact Sales",
+        "features": ["Everything in Pro", "Dedicated manager", "24/7 phone support", "SSO integration"]
+      }
+    },
+    "footer": {
+      "desc": "The complete content operating system.",
+      "product": "Product",
+      "features": "Features",
+      "integrations": "Integrations",
+      "pricing": "Pricing",
+      "resources": "Resources",
+      "help": "Help Center",
+      "api": "API Documentation",
+      "blog": "Blog",
+      "company": "Company",
+      "about": "About Us",
+      "careers": "Careers",
+      "contact": "Contact",
+      "copyright": "© 2026 ContentOps.ai. All rights reserved.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
+    }
+  },
+  "OrderDetail": {
+    "title": "Order Details",
+    "breadcrumbs": "Orders / Details",
+    "back": "Back to Orders",
+    "timeline": {
+      "submitted": "Order Submitted",
+      "in_progress": "Writing Started",
+      "review": "Delivered for Review",
+      "completed": "Approved & Completed"
+    },
+    "details": "Details",
+    "brief": "Creative Brief",
+    "keywords": "Keywords",
+    "targetKeywords": "Target Keywords",
+    "deliveredContent": "Delivered Content",
+    "actions": {
+      "approve": "Approve Deliverable",
+      "requestRevision": "Request Revision",
+      "download": "Download Copy"
+    },
+    "revisionModal": {
+      "title": "Request a Revision",
+      "placeholder": "Describe what needs to be changed. Please be as specific as possible...",
+      "submit": "Submit Revision Request",
+      "cancel": "Cancel"
+    },
+    "approveModal": {
+      "title": "Approve & Complete Order",
+      "rating": "Rate the content quality",
+      "feedback": "Any feedback for the writer?",
+      "submit": "Approve",
+      "cancel": "Cancel"
+    }
+  },
+  "NewOrder": {
+    "title": "New Content Order",
+    "breadcrumbs": "Orders / New Order",
+    "form": {
+      "title": "Order Details",
+      "subtitle": "Provide the guidelines for our writing team.",
+      "orderTitle": "Topic / Headline",
+      "orderTitlePlaceholder": "e.g., 5 Ways to Automate Your Business",
+      "type": "Content Type",
+      "priority": "Priority",
+      "wordCount": "Target Word Count",
+      "deadline": "Required Deadline",
+      "brief": "Detailed Brief & Guidelines",
+      "briefPlaceholder": "Outline what you want the article to be about, target audience, formatting requirements, etc.",
+      "keywords": "Keywords (Comma separated)",
+      "keywordsPlaceholder": "automation, saas, workflow",
+      "estimate": "Price Estimate",
+      "submit": "Place Order",
+      "cancel": "Cancel"
+    },
+    "priorities": {
+      "normal": "Normal",
+      "high": "High",
+      "urgent": "Urgent"
+    }
+  },
+  "Auth": {
+    "login": {
+      "title": "Sign In",
+      "subtitle": "Access your content dashboard",
+      "email": "Email Address",
+      "password": "Password",
+      "submit": "Sign In",
+      "footer": "Don't have an account?",
+      "footerLink": "Sign Up",
+      "error": "Invalid email or password."
+    },
+    "signup": {
+      "title": "Create Account",
+      "subtitle": "Start ordering high-quality content",
+      "name": "Full Name",
+      "company": "Company Name",
+      "email": "Email Address",
+      "password": "Password",
+      "submit": "Create Account",
+      "footer": "Already have an account?",
+      "footerLink": "Sign In",
+      "success": "Registration successful! Please check your email to verify your account.",
+      "error": "Could not complete registration. Please try again."
+    }
+  },
+  "About": {
+    "title": "Empowering Content Operations",
+    "subtitle": "We help modern marketing teams scale production without sacrificing quality.",
+    "story": {
+      "title": "Our Story",
+      "text": "Founded in 2026, ContentOps.ai was built out of frustration with messy spreadsheets and endless Slack feedback loops. We envisioned a centralized content operating system that unites agencies, writers, and clients in a single, transparent workflow."
+    },
+    "values": {
+      "title": "Our Values",
+      "clarityTitle": "Clarity First",
+      "clarityDesc": "No hidden feedback, no lost drafts. Everyone knows what to do next.",
+      "qualityTitle": "Quality at Scale",
+      "qualityDesc": "Automate the overhead so writers can focus on writing their best work.",
+      "partnershipTitle": "Partnership",
+      "partnershipDesc": "We are an extension of your creative team, committed to your growth."
+    },
+    "stats": {
+      "drafts": "50k+",
+      "draftsLabel": "Completed Drafts",
+      "clients": "200+",
+      "clientsLabel": "Happy Agencies"
+    }
+  },
+  "Careers": {
+    "title": "Join Our Mission",
+    "subtitle": "We are looking for creative thinkers and builders to shape the future of content operations.",
+    "culture": {
+      "title": "Our Culture",
+      "desc": "We believe in deep focus, async communication, and ownership. We work remotely, support continuous learning, and prioritize well-being."
+    },
+    "benefits": {
+      "title": "Benefits & Perks",
+      "remoteTitle": "Remote-First",
+      "remoteDesc": "Work from anywhere in the world, on your own schedule.",
+      "learningTitle": "Learning Budget",
+      "learningDesc": "Annual allowance for books, courses, and conferences.",
+      "wellnessTitle": "Wellness Allowance",
+      "wellnessDesc": "Monthly stipend for gym, mental health, or wellness apps."
+    },
+    "positions": {
+      "title": "Open Positions",
+      "apply": "Apply Now",
+      "role1": {
+        "title": "Senior Full Stack Engineer",
+        "dept": "Engineering",
+        "type": "Full-time"
+      },
+      "role2": {
+        "title": "Senior Content Strategist",
+        "dept": "Marketing",
+        "type": "Full-time"
+      },
+      "role3": {
+        "title": "UI/UX Designer",
+        "dept": "Design",
+        "type": "Full-time"
+      }
+    }
+  },
+  "Contact": {
+    "title": "Get in Touch",
+    "subtitle": "Have questions? We'd love to hear from you. Send us a message.",
+    "form": {
+      "title": "Send a Message",
+      "name": "Your Name",
+      "email": "Email Address",
+      "message": "Message",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "successTitle": "Message Sent Successfully!",
+      "successDesc": "Thank you! We have received your message and will get back to you shortly."
+    },
+    "info": {
+      "title": "Contact Information",
+      "email": "support@contentops.ai",
+      "phone": "Phone",
+      "phoneVal": "+1 (555) 019-2834",
+      "office": "Main Office",
+      "officeVal": "100 Pine Street, San Francisco, CA"
+    }
+  }
+}
