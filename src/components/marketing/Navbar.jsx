@@ -3,12 +3,33 @@
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname, useRouter } from '@/i18n/routing';
 import { Hexagon, Globe } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { createClient } from '@/lib/supabase/client';
 
 export default function Navbar() {
   const t = useTranslations('Landing');
   const pathname = usePathname();
   const router = useRouter();
   const locale = useLocale();
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const supabase = createClient();
+    
+    // Check initial session
+    supabase.auth.getUser().then(({ data }) => {
+      setUser(data?.user || null);
+      setLoading(false);
+    });
+    
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user || null);
+    });
+    
+    return () => subscription.unsubscribe();
+  }, []);
 
   const toggleLanguage = () => {
     const nextLocale = locale === 'en' ? 'ar' : 'en';
@@ -41,9 +62,14 @@ export default function Navbar() {
           <Globe size={16} />
           {locale === 'en' ? 'عربي' : 'EN'}
         </button>
-        <Link href="/login" className="px-5 py-2.5 bg-gray-100 text-black rounded-full text-sm font-bold hover:bg-gray-200 transition-colors">
-          {t('nav.signIn')}
-        </Link>
+        
+        {!loading ? (
+          <Link href={user ? "/dashboard" : "/login"} className="px-5 py-2.5 bg-gray-100 text-black rounded-full text-sm font-bold hover:bg-gray-200 transition-colors flex justify-center items-center">
+            {user ? t('nav.dashboard') : t('nav.signIn')}
+          </Link>
+        ) : (
+          <div className="w-[100px] h-[40px] bg-gray-100 rounded-full animate-pulse"></div>
+        )}
       </div>
     </header>
   );
