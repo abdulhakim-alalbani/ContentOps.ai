@@ -20,7 +20,7 @@ create table public.messages (
 alter table public.messages enable row level security;
 create policy "Users can view their own messages" on public.messages for select using (auth.uid() = client_id);
 create policy "Users can insert their own messages" on public.messages for insert with check (auth.uid() = client_id);
-create policy "Users can update their own messages" on public.messages for update using (auth.uid() = client_id);
+create policy "Users can update their own messages" on public.messages for update using (auth.uid() = client_id) with check (auth.uid() = client_id);
 create policy "Users can delete their own messages" on public.messages for delete using (auth.uid() = client_id);
 
 -- 3. Create Notifications Table
@@ -37,7 +37,7 @@ create table public.notifications (
 alter table public.notifications enable row level security;
 create policy "Users can view their own notifications" on public.notifications for select using (auth.uid() = client_id);
 create policy "Users can insert their own notifications" on public.notifications for insert with check (auth.uid() = client_id);
-create policy "Users can update their own notifications" on public.notifications for update using (auth.uid() = client_id);
+create policy "Users can update their own notifications" on public.notifications for update using (auth.uid() = client_id) with check (auth.uid() = client_id);
 create policy "Users can delete their own notifications" on public.notifications for delete using (auth.uid() = client_id);
 
 -- 4. Create Events Table
@@ -55,7 +55,7 @@ create table public.events (
 alter table public.events enable row level security;
 create policy "Users can view their own events" on public.events for select using (auth.uid() = client_id);
 create policy "Users can insert their own events" on public.events for insert with check (auth.uid() = client_id);
-create policy "Users can update their own events" on public.events for update using (auth.uid() = client_id);
+create policy "Users can update their own events" on public.events for update using (auth.uid() = client_id) with check (auth.uid() = client_id);
 create policy "Users can delete their own events" on public.events for delete using (auth.uid() = client_id);
 
 -- 5. Create Projects Table
@@ -74,5 +74,5 @@ create table public.projects (
 alter table public.projects enable row level security;
 create policy "Users can view their own projects" on public.projects for select using (auth.uid() = client_id);
 create policy "Users can insert their own projects" on public.projects for insert with check (auth.uid() = client_id);
-create policy "Users can update their own projects" on public.projects for update using (auth.uid() = client_id);
+create policy "Users can update their own projects" on public.projects for update using (auth.uid() = client_id) with check (auth.uid() = client_id);
 create policy "Users can delete their own projects" on public.projects for delete using (auth.uid() = client_id);

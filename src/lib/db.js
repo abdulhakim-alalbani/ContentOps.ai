@@ -1,7 +1,16 @@
 import { createClient } from './supabase/client';
+import { z } from 'zod';
 
 // We use the browser client because our current pages are "use client" components
 const supabase = createClient();
+
+const OrderSchema = z.object({
+  title: z.string().min(1, "Title is required").max(255),
+  brief: z.string().min(1, "Brief is required").max(5000),
+  type: z.string().optional(),
+  priority: z.string().optional(),
+  deadline: z.string().optional()
+});
 
 export const getOrders = async () => {
   const { data: { user } } = await supabase.auth.getUser();
@@ -120,20 +129,28 @@ export const createNewOrder = async (orderData) => {
     return null;
   }
 
+  let parsedData;
+  try {
+    parsedData = OrderSchema.parse(orderData);
+  } catch (error) {
+    console.error('Validation Error:', error);
+    return null;
+  }
+
   // Generate a random ID for the mockup
   const id = `ORD-${new Date().getFullYear()}-${Math.floor(100 + Math.random() * 900)}`;
   
   const newOrder = {
     id,
     client_id: user.id,
-    title: orderData.title,
-    brief: orderData.brief,
-    type: orderData.type || 'design',
+    title: parsedData.title,
+    brief: parsedData.brief,
+    type: parsedData.type || 'design',
     status: 'submitted',
-    priority: orderData.priority || 'normal',
+    priority: parsedData.priority || 'normal',
     word_count: 0,
     price: 0.00,
-    deadline: orderData.deadline || new Date(new Date().setDate(new Date().getDate() + 7)).toISOString().split('T')[0],
+    deadline: parsedData.deadline || new Date(new Date().setDate(new Date().getDate() + 7)).toISOString().split('T')[0],
     created_at: new Date().toISOString().split('T')[0]
   };
 
@@ -154,14 +171,22 @@ export const updateOrder = async (id, orderData) => {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return null;
 
+  let parsedData;
+  try {
+    parsedData = OrderSchema.parse(orderData);
+  } catch (error) {
+    console.error('Validation Error:', error);
+    return null;
+  }
+
   const { data, error } = await supabase
     .from('orders')
     .update({
-      title: orderData.title,
-      brief: orderData.brief,
-      type: orderData.type,
-      priority: orderData.priority,
-      deadline: orderData.deadline
+      title: parsedData.title,
+      brief: parsedData.brief,
+      type: parsedData.type,
+      priority: parsedData.priority,
+      deadline: parsedData.deadline
     })
     .eq('id', id)
     .eq('client_id', user.id)

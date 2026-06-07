@@ -23,7 +23,7 @@ create policy "Users can view their own profile" on public.profiles
   for select using (auth.uid() = id);
 
 create policy "Users can update their own profile" on public.profiles
-  for update using (auth.uid() = id);
+  for update using (auth.uid() = id) with check (auth.uid() = id);
 
 -- Trigger to automatically create a profile row when a new auth user signs up
 create or replace function public.handle_new_user()
@@ -64,7 +64,7 @@ create policy "Users can view their own settings" on public.settings
   for select using (auth.uid() = user_id);
 
 create policy "Users can update their own settings" on public.settings
-  for update using (auth.uid() = user_id);
+  for update using (auth.uid() = user_id) with check (auth.uid() = user_id);
 
 -- Trigger to create default settings for new profiles
 create or replace function public.handle_new_profile_settings()
@@ -110,4 +110,4 @@ create policy "Clients can insert their own orders" on public.orders
   for insert with check (auth.uid() = client_id);
 
 create policy "Clients can update their own orders" on public.orders
-  for update using (auth.uid() = client_id);
+  for update using (auth.uid() = client_id) with check (auth.uid() = client_id);

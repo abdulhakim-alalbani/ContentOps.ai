@@ -18,13 +18,13 @@ export default async function middleware(request) {
   const pathParts = pathname.split('/');
   const locale = routing.locales.includes(pathParts[1]) ? pathParts[1] : routing.defaultLocale;
 
-  // Paths requiring auth (protect dashboard subpages)
-  const isProtectedPath = pathname.match(/^\/(ar|en)\/(dashboard|clients|orders|settings)(\/|$)/);
-
   // Auth pages (redirect if already logged in)
   const isAuthPage = pathname.match(/^\/(ar|en)\/(login|signup)(\/|$)/);
 
-  if (isProtectedPath && !user) {
+  // Default to deny: protect everything except public paths (landing pages, auth pages)
+  const isPublicPath = isAuthPage || pathname === '/' || pathname === '/en' || pathname === '/ar';
+
+  if (!isPublicPath && !user) {
     // Redirect to login preserving the active locale
     const loginUrl = new URL(`/${locale}/login`, request.url);
     return NextResponse.redirect(loginUrl);
