@@ -12,6 +12,11 @@ const OrderSchema = z.object({
   deadline: z.string().optional()
 });
 
+const StatusSchema = z.enum(['submitted', 'in_progress', 'review', 'revision', 'completed', 'delivered']);
+const NotesSchema = z.string().min(1).max(2000);
+const RatingSchema = z.number().min(0).max(5);
+const FeedbackSchema = z.string().max(2000).optional();
+
 export const getOrders = async () => {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return [];
@@ -23,7 +28,7 @@ export const getOrders = async () => {
     .order('created_at', { ascending: false });
     
   if (error) {
-    console.error('Error fetching orders:', error);
+    console.error('Error fetching orders. Please try again later.');
     return [];
   }
   return data;
@@ -41,7 +46,7 @@ export const getOrderById = async (id) => {
     .single();
     
   if (error) {
-    console.error('Error fetching order by id:', error);
+    console.error('Error fetching order by id. Please try again later.');
     return null;
   }
   return data;
@@ -51,16 +56,24 @@ export const updateOrderStatus = async (id, status) => {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return null;
 
+  let parsedStatus;
+  try {
+    parsedStatus = StatusSchema.parse(status);
+  } catch (err) {
+    console.error('Validation Error for status.');
+    return null;
+  }
+
   const { data, error } = await supabase
     .from('orders')
-    .update({ status })
+    .update({ status: parsedStatus })
     .eq('id', id)
     .eq('client_id', user.id)
     .select()
     .single();
     
   if (error) {
-    console.error('Error updating order status:', error);
+    console.error('Error updating order status. Please try again later.');
     return null;
   }
   return data;
@@ -69,6 +82,14 @@ export const updateOrderStatus = async (id, status) => {
 export const requestRevision = async (id, notes) => {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return null;
+
+  let parsedNotes;
+  try {
+    parsedNotes = NotesSchema.parse(notes);
+  } catch (err) {
+    console.error('Validation Error for notes.');
+    return null;
+  }
 
   // First update the order status
   const { data: order, error: orderError } = await supabase
@@ -80,7 +101,7 @@ export const requestRevision = async (id, notes) => {
     .single();
     
   if (orderError) {
-    console.error('Error updating order status for revision:', orderError);
+    console.error('Error updating order status for revision. Please try again later.');
     return null;
   }
 
@@ -89,11 +110,11 @@ export const requestRevision = async (id, notes) => {
   const { error: revError } = await supabase
     .from('revisions')
     .insert([
-      { id: revisionId, order_id: id, notes: notes }
+      { id: revisionId, order_id: id, notes: parsedNotes }
     ]);
 
   if (revError) {
-    console.error('Error inserting revision note:', revError);
+    console.error('Error inserting revision note. Please try again later.');
   }
 
   return order;
@@ -103,12 +124,21 @@ export const approveOrder = async (id, rating, feedback) => {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) return null;
 
+  let parsedRating, parsedFeedback;
+  try {
+    parsedRating = RatingSchema.parse(rating);
+    parsedFeedback = FeedbackSchema.parse(feedback || "");
+  } catch (err) {
+    console.error('Validation Error for rating or feedback.');
+    return null;
+  }
+
   const { data, error } = await supabase
     .from('orders')
     .update({ 
       status: 'completed',
-      rating: rating,
-      feedback: feedback
+      rating: parsedRating,
+      feedback: parsedFeedback
     })
     .eq('id', id)
     .eq('client_id', user.id)
@@ -116,7 +146,7 @@ export const approveOrder = async (id, rating, feedback) => {
     .single();
     
   if (error) {
-    console.error('Error approving order:', error);
+    console.error('Error approving order. Please try again later.');
     return null;
   }
   return data;
@@ -161,7 +191,7 @@ export const createNewOrder = async (orderData) => {
     .single();
 
   if (error) {
-    console.error('Error creating new order:', error);
+    console.error('Error creating new order. Please try again later.');
     return null;
   }
   return data;
@@ -194,7 +224,7 @@ export const updateOrder = async (id, orderData) => {
     .single();
 
   if (error) {
-    console.error('Error updating order:', error);
+    console.error('Error updating order. Please try again later.');
     return null;
   }
   return data;
@@ -211,7 +241,7 @@ export const deleteOrder = async (id) => {
     .eq('client_id', user.id);
 
   if (error) {
-    console.error('Error deleting order:', error);
+    console.error('Error deleting order. Please try again later.');
     return false;
   }
   return true;
